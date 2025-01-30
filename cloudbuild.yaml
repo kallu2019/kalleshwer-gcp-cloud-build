@@ -26,7 +26,7 @@ steps:
           '--platform', 'managed',
           '--allow-unauthenticated'
         ]
+images:
+  - 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build'
 options:
  logging: CLOUD_LOGGING_ONLY
-images:
-- 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build'
