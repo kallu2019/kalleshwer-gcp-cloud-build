@@ -5,26 +5,26 @@ steps:
       args: [ 'clean', 'package' '-DskipTests']
 
   # 2. Build Docker image
-    - name: 'gcr.io/cloud-builders/docker'
+    - name: 'kbrepo/cloud-builders/docker'
       args: [
-      'build', '-t', 'us-central1-docker.pkg.dev/gcptraining-447016/gcr.io/kalleshwer-gcp-cloud-build', '.'
+      'build', '-t', 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build', '.'
     ]
 
   # 3. Push Docker image to Artifact Registry
-    - name: 'gcr.io/cloud-builders/docker'
+    - name: 'kbrepo/cloud-builders/docker'
       args: [
-      'push', 'us-central1-docker.pkg.dev/gcptraining-447016/gcr.io/kalleshwer-gcp-cloud-build'
+      'push', 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build'
     ]
 
   # 4. Deploy to Cloud Run
-    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    - name: 'kbrepo/google.com/cloudsdktool/cloud-sdk'
       entrypoint: gcloud
       args: [
           'run', 'deploy', 'kalleshwer-gcp-cloud-build',
-          '--image', 'us-central1-docker.pkg.dev/gcptraining-447016/gcr.io/kalleshwer-gcp-cloud-build',
+          '--image', 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build',
           '--region', 'us-central1',
           '--platform', 'managed',
           '--allow-unauthenticated'
         ]
 images:
-- 'us-central1-docker.pkg.dev/gcptraining-447016/gcr.io/kalleshwer-gcp-cloud-build'
+- 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build'
