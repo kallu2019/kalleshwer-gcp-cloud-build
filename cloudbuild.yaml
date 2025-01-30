@@ -2,7 +2,7 @@ steps:
   # 1. Build the JAR file using Maven
     - name: 'maven:3.6.3-jdk-11'
       entrypoint: 'mvn'
-      args: [ 'clean', 'package' '-DskipTests']
+      args: [ 'clean', 'package', '-DskipTests']
 
   # 2. Build Docker image
     - name: 'kbrepo/cloud-builders/docker'
