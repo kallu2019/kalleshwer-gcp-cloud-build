@@ -5,19 +5,19 @@ steps:
       args: [ 'clean', 'package', '-DskipTests']
 
   # 2. Build Docker image
-    - name: 'kbrepo/cloud-builders/docker'
+    - name: 'gcr.io/cloud-builders/docker'
       args: [
       'build', '-t', 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build', '.'
     ]
 
   # 3. Push Docker image to Artifact Registry
-    - name: 'kbrepo/cloud-builders/docker'
+    - name: 'gcr.io/cloud-builders/docker'
       args: [
       'push', 'us-central1-docker.pkg.dev/gcptraining-447016/kbrepo/kalleshwer-gcp-cloud-build'
     ]
 
   # 4. Deploy to Cloud Run
-    - name: 'kbrepo/google.com/cloudsdktool/cloud-sdk'
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
       entrypoint: gcloud
       args: [
           'run', 'deploy', 'kalleshwer-gcp-cloud-build',
